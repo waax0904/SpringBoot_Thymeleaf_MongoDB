@@ -26,7 +26,8 @@ public class HelloController {
 	@GetMapping("/hello")
 	public String hello(Model model) {
 
-		model.addAttribute("tt0001_list", service.getAllTT0001());
+		if( service.getAllTT0001().size() > 0)
+			model.addAttribute("tt0001_list", service.getAllTT0001());
 		
 		model.addAttribute("message", "Hello Thymeleaf!!");
 		model.addAttribute("model_value", "MODEL VALUE !");

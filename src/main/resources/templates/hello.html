@@ -24,7 +24,7 @@
 	</div>
 
 	<table border="1" align="center">
-		<tr>
+		<tr th:if="${ tt0001_list != null }">
 			<th>ID</th>
 			<th>ITEM</th>
 			<th>QTY</th>
@@ -57,7 +57,7 @@
 	</table>
 	<div id="center_div">
 		<a th:href="@{/add}" class="btn btn-success"
-			style="margin-top: 10px; width: 25%">ADD</a>
+			style="margin-top: 10px; width: 25%">Add New Record</a>
 	</div>
 
 	<hr>

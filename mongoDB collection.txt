@@ -1,4 +1,2 @@
 db.TT0001v2.insertOne({"_id":1 , "item":"PlayStation" , "qty" : 1})
-db.TT0001v2.insertOne({"_id":2 , "item":"Walkman" , "qty" : 2})
-db.TT0001v2.insertOne({"_id":3 , "item":"audio tape" , "qty" : 3})
-db.TT0001v2_seq.insertOne({"seq_id":3})
+db.TT0001v2_seq.insertOne({"seq_id":1})
