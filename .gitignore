@@ -1,6 +1,25 @@
-springbootWithMongoDB_practice/bin/*
-springbootWithMongoDB_practice/.classpath/*
-springbootWithMongoDB_practice/.gitignore/*
-springbootWithMongoDB_practice/.project/*
-springbootWithMongoDB_practice/.settings/*
-springbootWithMongoDB_practice/target/*
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+.classpath
+.project
+.settings/
+target/
