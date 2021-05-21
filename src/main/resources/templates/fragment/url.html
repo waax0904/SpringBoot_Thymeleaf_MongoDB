@@ -1,0 +1,52 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Thymeleaf URL</title>
+    </head>
+    <body>
+        <h1>url.html</h1>
+        <ul>
+            <li>
+                @{foo/bar} = [[@{foo/bar}]]
+            </li>
+            <li>
+                @{/foo/bar} = [[@{/foo/bar}]]
+            </li>
+            <li>
+                @{~/foo/bar} = [[@{~/foo/bar}]]
+            </li>
+            <li>
+                @{http://localhost:8080/foo/bar} = [[@{http://localhost:8080/foo/bar}]]
+            </li>
+            <li>
+                @{//localhost:8080/foo/bar} = [[@{//localhost:8080/foo/bar}]]
+            </li>
+        </ul>
+        
+        <hr>
+        
+        <div>
+        
+        
+		<div> <span style="font-size:24pt;color:red;">T</span>HYMELEAF には、下記３種類のコメントがあります、詳しくはソースコード</div>
+       	<!--パーサーレベルのコメント、
+       	このコメントは、レンダリング時に完全に除去され、 これを使えば、ソースコードから見えない -->
+        <!--/* -->
+            <h1 th:text="'parser level comment'"></h1>
+        <!-- */-->        
+        <!--一般的なコメント、これを使えると、ソースコードから見える -->
+		<!--
+			<h1 th:text="'oooooooooooooooo'"></h1>
+		 -->        
+        <!--プロトタイプのコメント 
+        ブラウザで直接開いた場合は単純な HTML のコメントとして扱われるが、 Thymeleaf のレンダリングは対象になる
+        ちょっと特殊なやつ       
+        -->
+        <!--/*/
+            <h1 th:text="'prototype comment'"></h1>
+        /*/-->
+        
+        </div>
+    </body>
+</html>

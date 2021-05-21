@@ -1,0 +1,42 @@
+body{
+	background-color : #e7dfdd;
+	margin-left : 20px;
+	margin-right : 20px;	
+}
+
+#center_div{
+	text-align: center;
+}
+
+#right_div{
+	text-align: right;
+}
+
+#center_div img{
+	height: 100pt;
+}
+.btn{
+	padding : 5px;
+	margin: 5px;
+	border: 2px solid #000000;
+}
+
+th, td{
+	margin-left : 5px;
+	margin-right : 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+th{
+	text-align:center;
+}
+
+.none_select{
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-o-user-select:none;
+	user-select:none;
+	background-color:#c8c8c8;
+	color:#000;
+}

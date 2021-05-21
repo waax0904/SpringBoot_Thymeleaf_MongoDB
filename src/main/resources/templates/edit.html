@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+<body>
+<h1>Edit Data</h1>
+<form th:action="@{/editDone}" th:object="${editObj}" method="POST">
+	<p>Id :    <input   type="text" th:field="${editObj.id}" class="none_select" readonly  /></p>
+	<p>Item: <input   type="text" th:field="*{item}" /></p>
+	<p>Qty:   <input   type="text" th:field="*{qty}" /></p>
+    <p><input type="submit" value="Update" /></p>
+</form>
+</body>
+</html>

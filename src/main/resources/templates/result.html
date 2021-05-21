@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Result</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Result</h1>
+   <p th:text="'id: ' + ${dataObj.id}" />
+   <p th:text="'item: ' + ${dataObj.item}" />
+   <p th:text="'qty: ' + ${dataObj.qty}" />
+   <HR>
+   
+   <p th:text="${mongodb}"/>
+   
+   <a href="add">Back to Add Form</a>
+   <p>
+		<a href="hello">Back to Hello Page :)</a>
+   </p>
+</body>
+</html>

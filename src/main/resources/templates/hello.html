@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+	<meta charset="UTF-8" />
+	<title>Hello Thymeleaf</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+<body>
+
+	<div id="right_div">
+		<form th:action="@{/logout}" method="post">
+	      	<button class="btn btn-danger" type="submit" value="Sign Out">Sign Out</button>
+	    </form>
+	</div>
+
+	<hr>
+
+	<div id="center_div">
+		<img src="/images/loading_cat.gif" alt="nyan~" />
+	</div>
+
+	<table border="1" align="center">
+		<tr>
+			<th>ID</th>
+			<th>ITEM</th>
+			<th>QTY</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+		<tr th:each="result : ${tt0001_list}">
+			<td th:text="${result['id']}"></td>
+			<td th:text="${result['item']}"></td>
+			<td th:text="${result['qty']}"></td>
+			<!-- EDIT BUTTON -->
+			<td>
+				<form th:action="@{/edit_request}" th:object="${dataObj}"
+					method="POST">
+					<input type="hidden" id="id" name="id" th:value="${result['id']}">
+					<button type="submit" class="btn btn-info">Edit</button>
+				</form>
+			</td>
+			<!-- DELETE BUTTON -->
+			<td>
+				<div class="delete_class">
+					<form class="delete_form" th:action="@{/delete_request}"
+						th:object="${deleteObj}" method="POST">
+						<input type="hidden" id="id" name="id" th:value="${result['id']}">
+						<span id="delete_id" class="deletebtn btn btn-danger">Delete</span>
+					</form>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<div id="center_div">
+		<a th:href="@{/add}" class="btn btn-success"
+			style="margin-top: 10px; width: 25%">ADD</a>
+	</div>
+
+	<hr>
+
+	<div
+		style="background-color: #ffffff; border: solid; border-width: 2px;">
+		<b>&nbsp;th:insert block :</b>
+		<div id="foo" th:insert="fragment/url"></div>
+	</div>
+
+	<h1 th:text="${message}"></h1>
+
+	<hr>
+
+	<h1 th:text="#{foo.message}"></h1>
+	<h1 th:text="#{bar.message}"></h1>
+
+	<h1 th:text="#{v1.message}"></h1>
+	<h1 th:text="#{v2.message}"></h1>
+
+	<hr>
+
+	<div>
+		<h1>[[${model_value}]]</h1>
+	</div>
+
+	<div>
+		<!-- 文字列 -->
+		<span th:text="'some text ... '"></span><br>
+		<!-- 数値 -->
+		<span th:text="123"></span><br>
+		<!-- 真偽値 -->
+		<span th:text="true"></span><br>
+		<!-- null -->
+		<span th:text="null"></span><br> <span
+			th:text="'some text' + '!!'"></span><br> <span
+			th:text="|Default Text add _ ${message}|"></span><br>
+	</div>
+	<hr>
+	<p>Boolean compare result in span :</p>
+	<div>
+		<span>1 &lt; 10 :</span><span th:text="1 < 10"></span><br> <span>1
+			&gt; 10 :</span><span th:text="1 > 10"></span><br> <span>1 &lt;= 10:</span><span
+			th:text="1 <= 10"></span><br> <span>1 >= 10:</span><span
+			th:text="1 >= 10"></span><br> <span>1 == 10:</span><span
+			th:text="1 == 10"></span><br> <span>1 != 10 :</span><span
+			th:text="1 != 10"></span><br>
+	</div>
+
+	<hr>
+	Map ( key - value )
+	<div>
+		<ul>
+			<li th:each="entry : ${map}">key=[[${entry.key}]],
+				value=[[${entry.value}]]</li>
+		</ul>
+	</div>
+
+	<hr>
+	List ( forEach )
+	<div>
+		<ul>
+			<li th:each="element, status : ${list}">index =
+				[[${status.index}]], count = [[${status.count}]], size =
+				[[${status.size}]], current = [[${status.current}]], even =
+				[[${status.even}]], odd = [[${status.odd}]], first =
+				[[${status.first}]], last = [[${status.last}]]</li>
+		</ul>
+	</div>
+	<hr>
+	th:block
+	<div>
+		<th:block th:each="element : ${list}">
+			<h2>[[${element}]]</h2>
+		</th:block>
+	</div>
+	<hr>
+
+	<div
+		style="background-color: #ffffff; border: solid; border-width: 2px;">
+		<b>th:insert AND pass fragment parameters</b>
+		<div
+			th:insert="fragment/getFragmentParameter :: f_para('Ein', 'Zwei')"></div>
+	</div>
+
+	<hr>
+
+	<script>
+     	var value_ = null;
+
+	 	$('#pbutton').on('click', function() {
+		  var text = $(this).closest('.dididi').find("span");
+		  swa();
+		});
+	 	
+	 	$('.deletebtn').on('click', function() {
+			value_ = $(this).closest(".delete_form").find('input');
+			console.log(value_);
+ 			swa();
+		});
+	 	
+	 	function swa(){
+	 		swal({
+	   			  title: "Are you sure?",
+	   			  text: "Once deleted, you will not be able to recover this record !",
+	   			  icon: "warning",
+	              confirmButtonText: 'Delete',
+	   			  buttons: true,
+	   			  dangerMode: true,
+	   			  closeOnCancle: true,
+	   			})
+	   			.then((willDelete) => {
+	   			  if (willDelete) {
+	   				swal("Bye.", {
+	   					icon: "success",
+	   			    }).then((willDelete) => {
+						$(value_).closest('form').submit();
+	   			    });
+	   			  } else {
+	   				  console.log("cancel delete");
+	   				  value_ = null;
+	   			  }
+	   			});
+	 	}
+     </script>
+
+</body>
+</html>
