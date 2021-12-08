@@ -7,11 +7,11 @@
 </head>
 <body>
 <h1>Form</h1>
-<form action="#" th:action="@{/result}" th:object="${dataObj}" method="post">
-    <p>Id: <input type="text" class="none_select"  th:field="*{id}"/></p>
+<form action="#" th:action="@{/addSubmit}" th:object="${dataObj}" method="post">
     <p>Item: <input type="text" th:field="*{item}" /></p>
     <p>Qty: <input type="text" th:field="*{qty}" /></p>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    <p><input type="submit" value="Submit" /></p> 
+    <p><input type="reset" value="Reset" /></p>
 </form>
 </body>
 </html>

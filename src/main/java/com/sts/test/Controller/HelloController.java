@@ -2,6 +2,7 @@ package com.sts.test.Controller;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,11 +12,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.sts.test.Service.TT0001Service;
+import com.sts.test.model.TT0001Model;
 
 @Controller
 public class HelloController {
+
 	@Autowired
 	TT0001Service service;
+
 	Hoge hoge = new Hoge();
 
 	@GetMapping("/")
@@ -26,8 +30,11 @@ public class HelloController {
 	@GetMapping("/hello")
 	public String hello(Model model) {
 
-		if( service.getAllTT0001().size() > 0)
-			model.addAttribute("tt0001_list", service.getAllTT0001());
+		List<TT0001Model> list_ = service.getAll_();
+		list_.remove(0);
+		if( list_.size() > 0) {
+			model.addAttribute("tt0001_list", list_);
+		}
 		
 		model.addAttribute("message", "Hello Thymeleaf!!");
 		model.addAttribute("model_value", "MODEL VALUE !");

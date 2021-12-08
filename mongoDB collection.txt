@@ -1,2 +1,8 @@
-db.TT0001v2.insertOne({"_id":1 , "item":"PlayStation" , "qty" : 1})
-db.TT0001v2_seq.insertOne({"seq_id":1})
+1. Create a database named "WayneDB"   :)
+2. Create a new collection named "TT0001v2"  , don't ask me what is TT0001 and why is v2  :D
+3. insert a record for sequence id number 
+   db.TT0001v2.insertOne
+   ({
+       "_id" : 0,
+       "seq" : 0
+   })

@@ -8,9 +8,9 @@
 <body>
 <h1>Edit Data</h1>
 <form th:action="@{/editDone}" th:object="${editObj}" method="POST">
-	<p>Id :    <input   type="text" th:field="${editObj.id}" class="none_select" readonly  /></p>
-	<p>Item: <input   type="text" th:field="*{item}" /></p>
-	<p>Qty:   <input   type="text" th:field="*{qty}" /></p>
+	<input type ="hidden" th:field="*{id}"/>
+	<p>Item:<input   type="text" th:field="*{item}" /></p>
+	<p>Qty:<input   type="text" th:field="*{qty}" /></p>
     <p><input type="submit" value="Update" /></p>
 </form>
 </body>
